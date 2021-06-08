@@ -78,8 +78,10 @@ class ConfigManager(object):
         return f"{config_dir}/{component}.tfvars.json"
 
     def set(self, component: str, key: str, value: str):
-        click.echo(f"Setting key {key} value {value} "
-                   f"for component {component}")
+        click.echo(
+            f"Setting key {key} value {value} "
+            f"for component {component}",
+        )
         config_vars = self.config_vars[component]
         if not config_vars.get(key):
             print_error_msg(f"{key} not a valid attribute in {component}")
@@ -109,8 +111,10 @@ class ConfigManager(object):
                 inp = get_input(f"{config_key}({config_desc})", v)
 
             if not inp and v is None:
-                if not click.confirm("press 'y' to set empty string and "
-                                     "'n' to skip", prompt_suffix=': '):
+                if not click.confirm(
+                    "press 'y' to set empty string and "
+                    "'n' to skip", prompt_suffix=': ',
+                ):
                     continue
                 inp = ""
 
@@ -136,11 +140,13 @@ class ConfigManager(object):
         render_j2_template(
             self.constants['tf_dir'],
             self.constants['main_tf'],
-            tf_cfgs)
+            tf_cfgs,
+        )
         render_j2_template(
             self.constants['tf_dir'],
             self.constants['vars_tf'],
-            self.tf_vars)
+            self.tf_vars,
+        )
 
     def check(self, component: str) -> bool:
         ''' check if all mandatory options of a specific component is set '''
@@ -154,10 +160,12 @@ class ConfigManager(object):
 
         if missing_cfgs:
             print_error_msg(
-                f"Missing {missing_cfgs!r} configs for {component} component")
+                f"Missing {missing_cfgs!r} configs for {component} component",
+            )
         else:
             print_success_msg(
-                f"All mandatory configs for {component} has been configured")
+                f"All mandatory configs for {component} has been configured",
+            )
         return valid
 
     def info(self, component: str):
@@ -171,7 +179,7 @@ class ConfigManager(object):
                 v["Description"],
                 v["Type"],
                 v["Required"],
-                v["ConfigApps"]
+                v["ConfigApps"],
             ])
         click.echo(add_pretty_table(fields, items))
 

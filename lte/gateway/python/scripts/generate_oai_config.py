@@ -239,7 +239,7 @@ def _get_context():
     }
 
     context["s1u_ip"] = mme_service_config.ipv4_sgw_s1u_addr or _get_iface_ip(
-        "spgw", "s1u_iface_name"
+        "spgw", "s1u_iface_name",
     )
 
     # set ovs params
@@ -255,10 +255,10 @@ def _get_context():
     ):
         context[key] = get_service_config_value("spgw", key, "")
     context["enable_apn_correction"] = get_service_config_value(
-        "mme", "enable_apn_correction", ""
+        "mme", "enable_apn_correction", "",
     )
     context["apn_correction_map_list"] = _get_apn_correction_map_list(
-        mme_service_config
+        mme_service_config,
     )
 
     return context
@@ -266,7 +266,7 @@ def _get_context():
 
 def main():
     logging.basicConfig(
-        level=logging.INFO, format="[%(asctime)s %(levelname)s %(name)s] %(message)s"
+        level=logging.INFO, format="[%(asctime)s %(levelname)s %(name)s] %(message)s",
     )
     context = _get_context()
     generate_template_config("spgw", "spgw", CONFIG_OVERRIDE_DIR, context.copy())
