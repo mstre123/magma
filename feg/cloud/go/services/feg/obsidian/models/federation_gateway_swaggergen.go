@@ -97,7 +97,7 @@ func (m *FederationGateway) Validate(formats strfmt.Registry) error {
 
 func (m *FederationGateway) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", GatewayDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models4.GatewayDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -149,7 +149,7 @@ func (m *FederationGateway) validateFederation(formats strfmt.Registry) error {
 
 func (m *FederationGateway) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", GatewayID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models4.GatewayID(m.ID)); err != nil {
 		return err
 	}
 
@@ -183,7 +183,7 @@ func (m *FederationGateway) validateMagmad(formats strfmt.Registry) error {
 
 func (m *FederationGateway) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", GatewayName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models4.GatewayName(m.Name)); err != nil {
 		return err
 	}
 
@@ -216,7 +216,7 @@ func (m *FederationGateway) validateStatus(formats strfmt.Registry) error {
 
 func (m *FederationGateway) validateTier(formats strfmt.Registry) error {
 
-	if err := validate.Required("tier", "body", TierID(m.Tier)); err != nil {
+	if err := validate.Required("tier", "body", models5.TierID(m.Tier)); err != nil {
 		return err
 	}
 

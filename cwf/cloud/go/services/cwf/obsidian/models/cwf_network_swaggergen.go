@@ -116,7 +116,7 @@ func (m *CwfNetwork) validateCarrierWifi(formats strfmt.Registry) error {
 
 func (m *CwfNetwork) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", NetworkDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models5.NetworkDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -185,7 +185,7 @@ func (m *CwfNetwork) validateFederation(formats strfmt.Registry) error {
 
 func (m *CwfNetwork) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", NetworkID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models5.NetworkID(m.ID)); err != nil {
 		return err
 	}
 
@@ -201,7 +201,7 @@ func (m *CwfNetwork) validateID(formats strfmt.Registry) error {
 
 func (m *CwfNetwork) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", NetworkName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models5.NetworkName(m.Name)); err != nil {
 		return err
 	}
 

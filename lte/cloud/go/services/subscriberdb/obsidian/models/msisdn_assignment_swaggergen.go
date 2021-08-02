@@ -49,7 +49,7 @@ func (m *MsisdnAssignment) Validate(formats strfmt.Registry) error {
 
 func (m *MsisdnAssignment) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", SubscriberID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models1.SubscriberID(m.ID)); err != nil {
 		return err
 	}
 

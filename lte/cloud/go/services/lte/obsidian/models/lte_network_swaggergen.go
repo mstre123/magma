@@ -107,7 +107,7 @@ func (m *LteNetwork) validateCellular(formats strfmt.Registry) error {
 
 func (m *LteNetwork) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", NetworkDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models3.NetworkDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -158,7 +158,7 @@ func (m *LteNetwork) validateFeatures(formats strfmt.Registry) error {
 
 func (m *LteNetwork) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", NetworkID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models3.NetworkID(m.ID)); err != nil {
 		return err
 	}
 
@@ -174,7 +174,7 @@ func (m *LteNetwork) validateID(formats strfmt.Registry) error {
 
 func (m *LteNetwork) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", NetworkName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models3.NetworkName(m.Name)); err != nil {
 		return err
 	}
 

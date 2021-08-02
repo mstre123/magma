@@ -108,7 +108,7 @@ func (m *FegLteNetwork) validateCellular(formats strfmt.Registry) error {
 
 func (m *FegLteNetwork) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", NetworkDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models4.NetworkDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -177,7 +177,7 @@ func (m *FegLteNetwork) validateFederation(formats strfmt.Registry) error {
 
 func (m *FegLteNetwork) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", NetworkID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models4.NetworkID(m.ID)); err != nil {
 		return err
 	}
 
@@ -193,7 +193,7 @@ func (m *FegLteNetwork) validateID(formats strfmt.Registry) error {
 
 func (m *FegLteNetwork) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", NetworkName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models4.NetworkName(m.Name)); err != nil {
 		return err
 	}
 

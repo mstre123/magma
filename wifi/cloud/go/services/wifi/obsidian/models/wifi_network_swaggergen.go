@@ -73,7 +73,7 @@ func (m *WifiNetwork) Validate(formats strfmt.Registry) error {
 
 func (m *WifiNetwork) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", NetworkDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models1.NetworkDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -106,7 +106,7 @@ func (m *WifiNetwork) validateFeatures(formats strfmt.Registry) error {
 
 func (m *WifiNetwork) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", NetworkID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models1.NetworkID(m.ID)); err != nil {
 		return err
 	}
 
@@ -122,7 +122,7 @@ func (m *WifiNetwork) validateID(formats strfmt.Registry) error {
 
 func (m *WifiNetwork) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", NetworkName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models1.NetworkName(m.Name)); err != nil {
 		return err
 	}
 

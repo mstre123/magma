@@ -61,7 +61,7 @@ func (m *MutableSmsMessage) Validate(formats strfmt.Registry) error {
 
 func (m *MutableSmsMessage) validateImsi(formats strfmt.Registry) error {
 
-	if err := validate.Required("imsi", "body", SubscriberID(m.Imsi)); err != nil {
+	if err := validate.Required("imsi", "body", models1.SubscriberID(m.Imsi)); err != nil {
 		return err
 	}
 

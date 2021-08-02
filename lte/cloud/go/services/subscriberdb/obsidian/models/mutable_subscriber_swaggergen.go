@@ -150,7 +150,7 @@ func (m *MutableSubscriber) validateActivePoliciesByApn(formats strfmt.Registry)
 
 func (m *MutableSubscriber) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", SubscriberID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models1.SubscriberID(m.ID)); err != nil {
 		return err
 	}
 

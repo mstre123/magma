@@ -163,7 +163,7 @@ func (m *LteGateway) validateConnectedEnodebSerials(formats strfmt.Registry) err
 
 func (m *LteGateway) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", GatewayDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models3.GatewayDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -197,7 +197,7 @@ func (m *LteGateway) validateDevice(formats strfmt.Registry) error {
 
 func (m *LteGateway) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", GatewayID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models3.GatewayID(m.ID)); err != nil {
 		return err
 	}
 
@@ -231,7 +231,7 @@ func (m *LteGateway) validateMagmad(formats strfmt.Registry) error {
 
 func (m *LteGateway) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", GatewayName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models3.GatewayName(m.Name)); err != nil {
 		return err
 	}
 
@@ -264,7 +264,7 @@ func (m *LteGateway) validateStatus(formats strfmt.Registry) error {
 
 func (m *LteGateway) validateTier(formats strfmt.Registry) error {
 
-	if err := validate.Required("tier", "body", TierID(m.Tier)); err != nil {
+	if err := validate.Required("tier", "body", models4.TierID(m.Tier)); err != nil {
 		return err
 	}
 

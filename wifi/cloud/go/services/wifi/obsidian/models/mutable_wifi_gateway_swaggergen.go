@@ -90,7 +90,7 @@ func (m *MutableWifiGateway) Validate(formats strfmt.Registry) error {
 
 func (m *MutableWifiGateway) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("description", "body", GatewayDescription(m.Description)); err != nil {
+	if err := validate.Required("description", "body", models1.GatewayDescription(m.Description)); err != nil {
 		return err
 	}
 
@@ -124,7 +124,7 @@ func (m *MutableWifiGateway) validateDevice(formats strfmt.Registry) error {
 
 func (m *MutableWifiGateway) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", GatewayID(m.ID)); err != nil {
+	if err := validate.Required("id", "body", models1.GatewayID(m.ID)); err != nil {
 		return err
 	}
 
@@ -158,7 +158,7 @@ func (m *MutableWifiGateway) validateMagmad(formats strfmt.Registry) error {
 
 func (m *MutableWifiGateway) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", GatewayName(m.Name)); err != nil {
+	if err := validate.Required("name", "body", models1.GatewayName(m.Name)); err != nil {
 		return err
 	}
 
@@ -174,7 +174,7 @@ func (m *MutableWifiGateway) validateName(formats strfmt.Registry) error {
 
 func (m *MutableWifiGateway) validateTier(formats strfmt.Registry) error {
 
-	if err := validate.Required("tier", "body", TierID(m.Tier)); err != nil {
+	if err := validate.Required("tier", "body", models2.TierID(m.Tier)); err != nil {
 		return err
 	}
 
