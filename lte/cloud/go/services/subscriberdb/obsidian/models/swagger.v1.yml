@@ -394,7 +394,7 @@ definitions:
     description: Page of subscribers
     type: object
     required:
-      - next_page_token
+      - page_token
       - subscribers
       - total_count
     properties:
@@ -404,12 +404,11 @@ definitions:
         description: estimated total number of subscriber entries
         example: 10
         x-nullable: false
-      next_page_token:
-        $ref: './orc8r-swagger-common.yml#/definitions/next_page_token'
+      page_token:
+        $ref: './orc8r-swagger-common.yml#/definitions/page_token'
       subscribers:
         type: object
         additionalProperties:
-          x-nullable: true
           $ref: '#/definitions/subscriber'
 
   subscriber_config:

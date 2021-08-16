@@ -271,9 +271,9 @@ func listSubscribersV2Handler(c echo.Context) error {
 		return c.JSON(http.StatusOK, nil)
 	}
 	paginatedSubs := subscribermodels.PaginatedSubscribers{
-		TotalCount:    int64(count),
-		NextPageToken: subscribermodels.NextPageToken(nextPageToken),
-		Subscribers:   subs,
+		TotalCount:  int64(count),
+		PageToken:   subscribermodels.PageToken(nextPageToken),
+		Subscribers: subs,
 	}
 	return c.JSON(http.StatusOK, paginatedSubs)
 }

@@ -16,7 +16,6 @@ package handlers
 import (
 	"fmt"
 	"net/http"
-	"strconv"
 
 	"magma/lte/cloud/go/lte"
 	"magma/lte/cloud/go/serdes"
@@ -86,9 +85,6 @@ const (
 	ListEnodebsPath    = ManageNetworkPath + obsidian.UrlSep + Enodebs
 	ManageEnodebPath   = ListEnodebsPath + obsidian.UrlSep + ":enodeb_serial"
 	GetEnodebStatePath = ManageEnodebPath + obsidian.UrlSep + "state"
-
-	ParamPageSize  = "page_size"
-	ParamPageToken = "page_token"
 )
 
 func GetHandlers() []obsidian.Handler {
@@ -304,15 +300,9 @@ func listEnodebs(c echo.Context) error {
 	if nerr != nil {
 		return nerr
 	}
-	var pageSize uint64 = 0
-	var err error
-
-	if pageSizeParam := c.QueryParam(ParamPageSize); pageSizeParam != "" {
-		pageSize, err = strconv.ParseUint(pageSizeParam, 10, 32)
-		if err != nil {
-			err := fmt.Errorf("invalid page size parameter: %s", err)
-			return obsidian.HttpError(err, http.StatusBadRequest)
-		}
+	pageSize, pageToken, err := obsidian.GetPageSizeAndTokenParams(c)
+	if err != nil {
+		return err
 	}
 
 	ents, nextPageToken, err := configurator.LoadAllEntitiesOfType(
@@ -322,7 +312,7 @@ func listEnodebs(c echo.Context) error {
 			LoadConfig:       true,
 			LoadAssocsToThis: true,
 			PageSize:         uint32(pageSize),
-			PageToken:        c.QueryParam(ParamPageToken)},
+			PageToken:        pageToken},
 		serdes.Entity,
 	)
 	if err != nil {
@@ -334,9 +324,9 @@ func listEnodebs(c echo.Context) error {
 		enodebs[ent.Key] = (&lte_models.Enodeb{}).FromBackendModels(ent)
 	}
 	paginatedEnodebs := &lte_models.PaginatedEnodebs{
-		Enodebs:       enodebs,
-		NextPageToken: lte_models.NextPageToken(nextPageToken),
-		TotalCount:    int64(len(enodebs)),
+		Enodebs:    enodebs,
+		PageToken:  lte_models.PageToken(nextPageToken),
+		TotalCount: int64(len(enodebs)),
 	}
 	return c.JSON(http.StatusOK, paginatedEnodebs)
 }

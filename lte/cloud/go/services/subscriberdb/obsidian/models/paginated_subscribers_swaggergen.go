@@ -17,13 +17,13 @@ import (
 // swagger:model paginated_subscribers
 type PaginatedSubscribers struct {
 
-	// next page token
+	// page token
 	// Required: true
-	NextPageToken NextPageToken `json:"next_page_token"`
+	PageToken PageToken `json:"page_token"`
 
 	// subscribers
 	// Required: true
-	Subscribers map[string]*Subscriber `json:"subscribers"`
+	Subscribers map[string]Subscriber `json:"subscribers"`
 
 	// estimated total number of subscriber entries
 	// Required: true
@@ -34,7 +34,7 @@ type PaginatedSubscribers struct {
 func (m *PaginatedSubscribers) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateNextPageToken(formats); err != nil {
+	if err := m.validatePageToken(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -52,11 +52,11 @@ func (m *PaginatedSubscribers) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PaginatedSubscribers) validateNextPageToken(formats strfmt.Registry) error {
+func (m *PaginatedSubscribers) validatePageToken(formats strfmt.Registry) error {
 
-	if err := m.NextPageToken.Validate(formats); err != nil {
+	if err := m.PageToken.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("next_page_token")
+			return ve.ValidateName("page_token")
 		}
 		return err
 	}
