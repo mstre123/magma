@@ -187,6 +187,7 @@ func TestNewConfigManager(t *testing.T) {
 	assert.Equal(t, "unix:///tmp/sctpd_upstream.sock", cm.Config().SctpdUpstreamServiceTarget)
 	assert.Equal(t, "unix:///tmp/mme_sctpd_downstream.sock", cm.Config().MmeSctpdDownstreamServiceTarget)
 	assert.Equal(t, "unix:///tmp/mme_sctpd_upstream.sock", cm.Config().MmeSctpdUpstreamServiceTarget)
+	assert.Equal(t, "/home/vagrant/magma/src/go/capture/resources/intercept.txt", cm.Config().SctpdDownstreamMiddlewareConfig.InterceptOutputPath)
 	assert.Equal(t, "", cm.Config().SentryDsn)
 }
 

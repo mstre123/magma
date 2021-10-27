@@ -87,6 +87,9 @@ func newDefaultConfig() *mconfig.AgwD {
 		MmeSctpdUpstreamServiceTarget:   "unix:///tmp/mme_sctpd_upstream.sock",
 		// Sentry is disabled if DSN is not set.
 		SentryDsn: "",
+		SctpdDownstreamMiddlewareConfig: &mconfig.MiddlewareConfig{
+			InterceptOutputPath: "/home/vagrant/magma/src/go/capture/resources/intercept.txt",
+		},
 	}
 }
 

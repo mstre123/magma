@@ -108,3 +108,4 @@ bazel-out
 bazel-testlogs
 help
 compile_commands.json
+/src/go/capture/resources/intercept.txt

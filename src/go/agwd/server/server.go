@@ -18,6 +18,7 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/magma/magma/src/go/middleware"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 
@@ -29,8 +30,9 @@ import (
 )
 
 func newServiceRouter(cfgr config.Configer) service.Router {
+	sctpdDownstreamClientMiddleware := middleware.NewMiddleware(cfgr.Config().GetSctpdDownstreamMiddlewareConfig())
 	sctpdDownstreamConn, err := grpc.Dial(
-		cfgr.Config().GetSctpdDownstreamServiceTarget(), grpc.WithInsecure())
+		cfgr.Config().GetSctpdDownstreamServiceTarget(), grpc.WithInsecure(), sctpdDownstreamClientMiddleware.GetUnaryClientInterceptor())
 	if err != nil {
 		panic(err)
 	}

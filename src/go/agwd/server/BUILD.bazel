@@ -8,6 +8,7 @@ go_library(
     deps = [
         "//src/go/agwd/config",
         "//src/go/log",
+        "//src/go/middleware",
         "//src/go/protos/magma/sctpd",
         "//src/go/service",
         "//src/go/service/sctpd",

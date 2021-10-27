@@ -525,4 +525,10 @@ message AgwD {
   // The DSN to use. If the data source name is not set, the client is effectively
   // disabled.
   string sentry_dsn = 6;
+
+  MiddlewareConfig sctpd_downstream_middleware_config = 7;
+}
+
+message MiddlewareConfig {
+   string intercept_output_path = 1;
 }

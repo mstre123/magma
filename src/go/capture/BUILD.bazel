@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "capture_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/src/go/capture",
+    visibility = ["//visibility:private"],
+    deps = ["//src/go/agwd/config"],
+)
+
+go_binary(
+    name = "capture",
+    embed = [":capture_lib"],
+    visibility = ["//visibility:public"],
+)

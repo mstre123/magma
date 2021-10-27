@@ -2475,7 +2475,8 @@ type AgwD struct {
 	// Sentry Client Options.
 	// The DSN to use. If the data source name is not set, the client is effectively
 	// disabled.
-	SentryDsn string `protobuf:"bytes,6,opt,name=sentry_dsn,json=sentryDsn,proto3" json:"sentry_dsn,omitempty"`
+	SentryDsn                       string            `protobuf:"bytes,6,opt,name=sentry_dsn,json=sentryDsn,proto3" json:"sentry_dsn,omitempty"`
+	SctpdDownstreamMiddlewareConfig *MiddlewareConfig `protobuf:"bytes,7,opt,name=sctpd_downstream_middleware_config,json=sctpdDownstreamMiddlewareConfig,proto3" json:"sctpd_downstream_middleware_config,omitempty"`
 }
 
 func (x *AgwD) Reset() {
@@ -2552,6 +2553,60 @@ func (x *AgwD) GetSentryDsn() string {
 	return ""
 }
 
+func (x *AgwD) GetSctpdDownstreamMiddlewareConfig() *MiddlewareConfig {
+	if x != nil {
+		return x.SctpdDownstreamMiddlewareConfig
+	}
+	return nil
+}
+
+type MiddlewareConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	InterceptOutputPath string `protobuf:"bytes,1,opt,name=intercept_output_path,json=interceptOutputPath,proto3" json:"intercept_output_path,omitempty"`
+}
+
+func (x *MiddlewareConfig) Reset() {
+	*x = MiddlewareConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_mconfigs_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MiddlewareConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MiddlewareConfig) ProtoMessage() {}
+
+func (x *MiddlewareConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_mconfigs_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MiddlewareConfig.ProtoReflect.Descriptor instead.
+func (*MiddlewareConfig) Descriptor() ([]byte, []int) {
+	return file_mconfigs_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *MiddlewareConfig) GetInterceptOutputPath() string {
+	if x != nil {
+		return x.InterceptOutputPath
+	}
+	return ""
+}
+
 type EnodebD_FDDConfig struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2564,7 +2619,7 @@ type EnodebD_FDDConfig struct {
 func (x *EnodebD_FDDConfig) Reset() {
 	*x = EnodebD_FDDConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[21]
+		mi := &file_mconfigs_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2577,7 +2632,7 @@ func (x *EnodebD_FDDConfig) String() string {
 func (*EnodebD_FDDConfig) ProtoMessage() {}
 
 func (x *EnodebD_FDDConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[21]
+	mi := &file_mconfigs_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2622,7 +2677,7 @@ type EnodebD_TDDConfig struct {
 func (x *EnodebD_TDDConfig) Reset() {
 	*x = EnodebD_TDDConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[22]
+		mi := &file_mconfigs_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2635,7 +2690,7 @@ func (x *EnodebD_TDDConfig) String() string {
 func (*EnodebD_TDDConfig) ProtoMessage() {}
 
 func (x *EnodebD_TDDConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[22]
+	mi := &file_mconfigs_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2694,7 +2749,7 @@ type EnodebD_EnodebConfig struct {
 func (x *EnodebD_EnodebConfig) Reset() {
 	*x = EnodebD_EnodebConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[23]
+		mi := &file_mconfigs_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2707,7 +2762,7 @@ func (x *EnodebD_EnodebConfig) String() string {
 func (*EnodebD_EnodebConfig) ProtoMessage() {}
 
 func (x *EnodebD_EnodebConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[23]
+	mi := &file_mconfigs_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2805,7 +2860,7 @@ type PipelineD_AllowedGrePeer struct {
 func (x *PipelineD_AllowedGrePeer) Reset() {
 	*x = PipelineD_AllowedGrePeer{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[25]
+		mi := &file_mconfigs_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2818,7 +2873,7 @@ func (x *PipelineD_AllowedGrePeer) String() string {
 func (*PipelineD_AllowedGrePeer) ProtoMessage() {}
 
 func (x *PipelineD_AllowedGrePeer) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[25]
+	mi := &file_mconfigs_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2860,7 +2915,7 @@ type PipelineD_IPDRExportDst struct {
 func (x *PipelineD_IPDRExportDst) Reset() {
 	*x = PipelineD_IPDRExportDst{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[26]
+		mi := &file_mconfigs_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2873,7 +2928,7 @@ func (x *PipelineD_IPDRExportDst) String() string {
 func (*PipelineD_IPDRExportDst) ProtoMessage() {}
 
 func (x *PipelineD_IPDRExportDst) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[26]
+	mi := &file_mconfigs_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2918,7 +2973,7 @@ type PipelineD_LiUes struct {
 func (x *PipelineD_LiUes) Reset() {
 	*x = PipelineD_LiUes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[27]
+		mi := &file_mconfigs_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2931,7 +2986,7 @@ func (x *PipelineD_LiUes) String() string {
 func (*PipelineD_LiUes) ProtoMessage() {}
 
 func (x *PipelineD_LiUes) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[27]
+	mi := &file_mconfigs_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3002,7 +3057,7 @@ type PipelineD_HEConfig struct {
 func (x *PipelineD_HEConfig) Reset() {
 	*x = PipelineD_HEConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[28]
+		mi := &file_mconfigs_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3015,7 +3070,7 @@ func (x *PipelineD_HEConfig) String() string {
 func (*PipelineD_HEConfig) ProtoMessage() {}
 
 func (x *PipelineD_HEConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[28]
+	mi := &file_mconfigs_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3092,7 +3147,7 @@ type MME_ApnCorrectionMap struct {
 func (x *MME_ApnCorrectionMap) Reset() {
 	*x = MME_ApnCorrectionMap{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[29]
+		mi := &file_mconfigs_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3105,7 +3160,7 @@ func (x *MME_ApnCorrectionMap) String() string {
 func (*MME_ApnCorrectionMap) ProtoMessage() {}
 
 func (x *MME_ApnCorrectionMap) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[29]
+	mi := &file_mconfigs_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3148,7 +3203,7 @@ type MME_PlmnConfig struct {
 func (x *MME_PlmnConfig) Reset() {
 	*x = MME_PlmnConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[30]
+		mi := &file_mconfigs_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3161,7 +3216,7 @@ func (x *MME_PlmnConfig) String() string {
 func (*MME_PlmnConfig) ProtoMessage() {}
 
 func (x *MME_PlmnConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[30]
+	mi := &file_mconfigs_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3202,7 +3257,7 @@ type MME_TacList struct {
 func (x *MME_TacList) Reset() {
 	*x = MME_TacList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[31]
+		mi := &file_mconfigs_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3215,7 +3270,7 @@ func (x *MME_TacList) String() string {
 func (*MME_TacList) ProtoMessage() {}
 
 func (x *MME_TacList) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[31]
+	mi := &file_mconfigs_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3251,7 +3306,7 @@ type MME_ImeiConfig struct {
 func (x *MME_ImeiConfig) Reset() {
 	*x = MME_ImeiConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[33]
+		mi := &file_mconfigs_proto_msgTypes[34]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3264,7 +3319,7 @@ func (x *MME_ImeiConfig) String() string {
 func (*MME_ImeiConfig) ProtoMessage() {}
 
 func (x *MME_ImeiConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[33]
+	mi := &file_mconfigs_proto_msgTypes[34]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3308,7 +3363,7 @@ type SubscriberDB_SubscriptionProfile struct {
 func (x *SubscriberDB_SubscriptionProfile) Reset() {
 	*x = SubscriberDB_SubscriptionProfile{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_mconfigs_proto_msgTypes[34]
+		mi := &file_mconfigs_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -3321,7 +3376,7 @@ func (x *SubscriberDB_SubscriptionProfile) String() string {
 func (*SubscriberDB_SubscriptionProfile) ProtoMessage() {}
 
 func (x *SubscriberDB_SubscriptionProfile) ProtoReflect() protoreflect.Message {
-	mi := &file_mconfigs_proto_msgTypes[34]
+	mi := &file_mconfigs_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3906,8 +3961,8 @@ var file_mconfigs_proto_rawDesc = []byte{
 	0x6f, 0x72, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x72, 0x65, 0x63,
 	0x6f, 0x72, 0x64, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6e, 0x61, 0x6d, 0x65,
 	0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e,
-	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x22, 0xc3,
-	0x03, 0x0a, 0x04, 0x41, 0x67, 0x77, 0x44, 0x12, 0x39, 0x0a, 0x09, 0x6c, 0x6f, 0x67, 0x5f, 0x6c,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x22, 0xb1,
+	0x04, 0x0a, 0x04, 0x41, 0x67, 0x77, 0x44, 0x12, 0x39, 0x0a, 0x09, 0x6c, 0x6f, 0x67, 0x5f, 0x6c,
 	0x65, 0x76, 0x65, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1c, 0x2e, 0x6d, 0x61, 0x67,
 	0x6d, 0x61, 0x2e, 0x6d, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x41, 0x67, 0x77, 0x44, 0x2e,
 	0x4c, 0x6f, 0x67, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x52, 0x08, 0x6c, 0x6f, 0x67, 0x4c, 0x65, 0x76,
@@ -3931,14 +3986,25 @@ var file_mconfigs_proto_rawDesc = []byte{
 	0x70, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x54, 0x61,
 	0x72, 0x67, 0x65, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x5f, 0x64,
 	0x73, 0x6e, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x73, 0x65, 0x6e, 0x74, 0x72, 0x79,
-	0x44, 0x73, 0x6e, 0x22, 0x3f, 0x0a, 0x08, 0x4c, 0x6f, 0x67, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12,
-	0x09, 0x0a, 0x05, 0x55, 0x4e, 0x53, 0x45, 0x54, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x44, 0x45,
-	0x42, 0x55, 0x47, 0x10, 0x01, 0x12, 0x08, 0x0a, 0x04, 0x49, 0x4e, 0x46, 0x4f, 0x10, 0x02, 0x12,
-	0x08, 0x0a, 0x04, 0x57, 0x41, 0x52, 0x4e, 0x10, 0x03, 0x12, 0x09, 0x0a, 0x05, 0x45, 0x52, 0x52,
-	0x4f, 0x52, 0x10, 0x04, 0x42, 0x23, 0x5a, 0x21, 0x6d, 0x61, 0x67, 0x6d, 0x61, 0x2f, 0x6c, 0x74,
-	0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x67, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x73, 0x2f, 0x6d, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x44, 0x73, 0x6e, 0x12, 0x6c, 0x0a, 0x22, 0x73, 0x63, 0x74, 0x70, 0x64, 0x5f, 0x64, 0x6f, 0x77,
+	0x6e, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x5f, 0x6d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x77, 0x61,
+	0x72, 0x65, 0x5f, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x1f, 0x2e, 0x6d, 0x61, 0x67, 0x6d, 0x61, 0x2e, 0x6d, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e,
+	0x4d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x77, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x52, 0x1f, 0x73, 0x63, 0x74, 0x70, 0x64, 0x44, 0x6f, 0x77, 0x6e, 0x73, 0x74, 0x72, 0x65, 0x61,
+	0x6d, 0x4d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x77, 0x61, 0x72, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x22, 0x3f, 0x0a, 0x08, 0x4c, 0x6f, 0x67, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x09, 0x0a,
+	0x05, 0x55, 0x4e, 0x53, 0x45, 0x54, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x44, 0x45, 0x42, 0x55,
+	0x47, 0x10, 0x01, 0x12, 0x08, 0x0a, 0x04, 0x49, 0x4e, 0x46, 0x4f, 0x10, 0x02, 0x12, 0x08, 0x0a,
+	0x04, 0x57, 0x41, 0x52, 0x4e, 0x10, 0x03, 0x12, 0x09, 0x0a, 0x05, 0x45, 0x52, 0x52, 0x4f, 0x52,
+	0x10, 0x04, 0x22, 0x46, 0x0a, 0x10, 0x4d, 0x69, 0x64, 0x64, 0x6c, 0x65, 0x77, 0x61, 0x72, 0x65,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x32, 0x0a, 0x15, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x63,
+	0x65, 0x70, 0x74, 0x5f, 0x6f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x5f, 0x70, 0x61, 0x74, 0x68, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x13, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x63, 0x65, 0x70, 0x74,
+	0x4f, 0x75, 0x74, 0x70, 0x75, 0x74, 0x50, 0x61, 0x74, 0x68, 0x42, 0x23, 0x5a, 0x21, 0x6d, 0x61,
+	0x67, 0x6d, 0x61, 0x2f, 0x6c, 0x74, 0x65, 0x2f, 0x63, 0x6c, 0x6f, 0x75, 0x64, 0x2f, 0x67, 0x6f,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6d, 0x63, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -3954,7 +4020,7 @@ func file_mconfigs_proto_rawDescGZIP() []byte {
 }
 
 var file_mconfigs_proto_enumTypes = make([]protoimpl.EnumInfo, 10)
-var file_mconfigs_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
+var file_mconfigs_proto_msgTypes = make([]protoimpl.MessageInfo, 37)
 var file_mconfigs_proto_goTypes = []interface{}{
 	(EnodebD_CSFBRat)(0),                        // 0: magma.mconfig.EnodebD.CSFBRat
 	(PipelineD_NetworkServices)(0),              // 1: magma.mconfig.PipelineD.NetworkServices
@@ -3987,75 +4053,77 @@ var file_mconfigs_proto_goTypes = []interface{}{
 	(*DnsD)(nil),                                // 28: magma.mconfig.DnsD
 	(*GatewayDNSConfigRecordsItems)(nil),        // 29: magma.mconfig.GatewayDNSConfigRecordsItems
 	(*AgwD)(nil),                                // 30: magma.mconfig.AgwD
-	(*EnodebD_FDDConfig)(nil),                   // 31: magma.mconfig.EnodebD.FDDConfig
-	(*EnodebD_TDDConfig)(nil),                   // 32: magma.mconfig.EnodebD.TDDConfig
-	(*EnodebD_EnodebConfig)(nil),                // 33: magma.mconfig.EnodebD.EnodebConfig
-	nil,                                         // 34: magma.mconfig.EnodebD.EnbConfigsBySerialEntry
-	(*PipelineD_AllowedGrePeer)(nil),            // 35: magma.mconfig.PipelineD.AllowedGrePeer
-	(*PipelineD_IPDRExportDst)(nil),             // 36: magma.mconfig.PipelineD.IPDRExportDst
-	(*PipelineD_LiUes)(nil),                     // 37: magma.mconfig.PipelineD.LiUes
-	(*PipelineD_HEConfig)(nil),                  // 38: magma.mconfig.PipelineD.HEConfig
-	(*MME_ApnCorrectionMap)(nil),                // 39: magma.mconfig.MME.ApnCorrectionMap
-	(*MME_PlmnConfig)(nil),                      // 40: magma.mconfig.MME.PlmnConfig
-	(*MME_TacList)(nil),                         // 41: magma.mconfig.MME.TacList
-	nil,                                         // 42: magma.mconfig.MME.ServiceAreaMapsEntry
-	(*MME_ImeiConfig)(nil),                      // 43: magma.mconfig.MME.ImeiConfig
-	(*SubscriberDB_SubscriptionProfile)(nil),    // 44: magma.mconfig.SubscriberDB.SubscriptionProfile
-	nil,                                         // 45: magma.mconfig.SubscriberDB.SubProfilesEntry
-	(orc8r.LogLevel)(0),                         // 46: magma.orc8r.LogLevel
+	(*MiddlewareConfig)(nil),                    // 31: magma.mconfig.MiddlewareConfig
+	(*EnodebD_FDDConfig)(nil),                   // 32: magma.mconfig.EnodebD.FDDConfig
+	(*EnodebD_TDDConfig)(nil),                   // 33: magma.mconfig.EnodebD.TDDConfig
+	(*EnodebD_EnodebConfig)(nil),                // 34: magma.mconfig.EnodebD.EnodebConfig
+	nil,                                         // 35: magma.mconfig.EnodebD.EnbConfigsBySerialEntry
+	(*PipelineD_AllowedGrePeer)(nil),            // 36: magma.mconfig.PipelineD.AllowedGrePeer
+	(*PipelineD_IPDRExportDst)(nil),             // 37: magma.mconfig.PipelineD.IPDRExportDst
+	(*PipelineD_LiUes)(nil),                     // 38: magma.mconfig.PipelineD.LiUes
+	(*PipelineD_HEConfig)(nil),                  // 39: magma.mconfig.PipelineD.HEConfig
+	(*MME_ApnCorrectionMap)(nil),                // 40: magma.mconfig.MME.ApnCorrectionMap
+	(*MME_PlmnConfig)(nil),                      // 41: magma.mconfig.MME.PlmnConfig
+	(*MME_TacList)(nil),                         // 42: magma.mconfig.MME.TacList
+	nil,                                         // 43: magma.mconfig.MME.ServiceAreaMapsEntry
+	(*MME_ImeiConfig)(nil),                      // 44: magma.mconfig.MME.ImeiConfig
+	(*SubscriberDB_SubscriptionProfile)(nil),    // 45: magma.mconfig.SubscriberDB.SubscriptionProfile
+	nil,                                         // 46: magma.mconfig.SubscriberDB.SubProfilesEntry
+	(orc8r.LogLevel)(0),                         // 47: magma.orc8r.LogLevel
 }
 var file_mconfigs_proto_depIdxs = []int32{
-	46, // 0: magma.mconfig.EnodebD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 0: magma.mconfig.EnodebD.log_level:type_name -> magma.orc8r.LogLevel
 	0,  // 1: magma.mconfig.EnodebD.csfb_rat:type_name -> magma.mconfig.EnodebD.CSFBRat
-	32, // 2: magma.mconfig.EnodebD.tdd_config:type_name -> magma.mconfig.EnodebD.TDDConfig
-	31, // 3: magma.mconfig.EnodebD.fdd_config:type_name -> magma.mconfig.EnodebD.FDDConfig
-	34, // 4: magma.mconfig.EnodebD.enb_configs_by_serial:type_name -> magma.mconfig.EnodebD.EnbConfigsBySerialEntry
-	46, // 5: magma.mconfig.PipelineD.log_level:type_name -> magma.orc8r.LogLevel
+	33, // 2: magma.mconfig.EnodebD.tdd_config:type_name -> magma.mconfig.EnodebD.TDDConfig
+	32, // 3: magma.mconfig.EnodebD.fdd_config:type_name -> magma.mconfig.EnodebD.FDDConfig
+	35, // 4: magma.mconfig.EnodebD.enb_configs_by_serial:type_name -> magma.mconfig.EnodebD.EnbConfigsBySerialEntry
+	47, // 5: magma.mconfig.PipelineD.log_level:type_name -> magma.orc8r.LogLevel
 	1,  // 6: magma.mconfig.PipelineD.services:type_name -> magma.mconfig.PipelineD.NetworkServices
-	35, // 7: magma.mconfig.PipelineD.allowed_gre_peers:type_name -> magma.mconfig.PipelineD.AllowedGrePeer
-	36, // 8: magma.mconfig.PipelineD.ipdr_export_dst:type_name -> magma.mconfig.PipelineD.IPDRExportDst
-	37, // 9: magma.mconfig.PipelineD.li_ues:type_name -> magma.mconfig.PipelineD.LiUes
-	38, // 10: magma.mconfig.PipelineD.he_config:type_name -> magma.mconfig.PipelineD.HEConfig
-	46, // 11: magma.mconfig.SessionD.log_level:type_name -> magma.orc8r.LogLevel
+	36, // 7: magma.mconfig.PipelineD.allowed_gre_peers:type_name -> magma.mconfig.PipelineD.AllowedGrePeer
+	37, // 8: magma.mconfig.PipelineD.ipdr_export_dst:type_name -> magma.mconfig.PipelineD.IPDRExportDst
+	38, // 9: magma.mconfig.PipelineD.li_ues:type_name -> magma.mconfig.PipelineD.LiUes
+	39, // 10: magma.mconfig.PipelineD.he_config:type_name -> magma.mconfig.PipelineD.HEConfig
+	47, // 11: magma.mconfig.SessionD.log_level:type_name -> magma.orc8r.LogLevel
 	14, // 12: magma.mconfig.SessionD.wallet_exhaust_detection:type_name -> magma.mconfig.WalletExhaustDetection
 	10, // 13: magma.mconfig.SessionD.sentry_config:type_name -> magma.mconfig.SentryConfig
 	5,  // 14: magma.mconfig.WalletExhaustDetection.method:type_name -> magma.mconfig.WalletExhaustDetection.Method
-	46, // 15: magma.mconfig.PolicyDB.log_level:type_name -> magma.orc8r.LogLevel
-	46, // 16: magma.mconfig.RedirectD.log_level:type_name -> magma.orc8r.LogLevel
-	46, // 17: magma.mconfig.MobilityD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 15: magma.mconfig.PolicyDB.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 16: magma.mconfig.RedirectD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 17: magma.mconfig.MobilityD.log_level:type_name -> magma.orc8r.LogLevel
 	6,  // 18: magma.mconfig.MobilityD.ip_allocator_type:type_name -> magma.mconfig.MobilityD.IpAllocatorType
-	46, // 19: magma.mconfig.MME.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 19: magma.mconfig.MME.log_level:type_name -> magma.orc8r.LogLevel
 	7,  // 20: magma.mconfig.MME.non_eps_service_control:type_name -> magma.mconfig.MME.NonEPSServiceControl
-	39, // 21: magma.mconfig.MME.apn_correction_map_list:type_name -> magma.mconfig.MME.ApnCorrectionMap
-	40, // 22: magma.mconfig.MME.restricted_plmns:type_name -> magma.mconfig.MME.PlmnConfig
-	42, // 23: magma.mconfig.MME.service_area_maps:type_name -> magma.mconfig.MME.ServiceAreaMapsEntry
+	40, // 21: magma.mconfig.MME.apn_correction_map_list:type_name -> magma.mconfig.MME.ApnCorrectionMap
+	41, // 22: magma.mconfig.MME.restricted_plmns:type_name -> magma.mconfig.MME.PlmnConfig
+	43, // 23: magma.mconfig.MME.service_area_maps:type_name -> magma.mconfig.MME.ServiceAreaMapsEntry
 	19, // 24: magma.mconfig.MME.federated_mode_map:type_name -> magma.mconfig.FederatedModeMap
-	43, // 25: magma.mconfig.MME.restricted_imeis:type_name -> magma.mconfig.MME.ImeiConfig
+	44, // 25: magma.mconfig.MME.restricted_imeis:type_name -> magma.mconfig.MME.ImeiConfig
 	10, // 26: magma.mconfig.MME.sentry_config:type_name -> magma.mconfig.SentryConfig
 	20, // 27: magma.mconfig.FederatedModeMap.mapping:type_name -> magma.mconfig.ModeMapItem
 	8,  // 28: magma.mconfig.ModeMapItem.mode:type_name -> magma.mconfig.ModeMapItem.FederatedMode
-	46, // 29: magma.mconfig.SubscriberDB.log_level:type_name -> magma.orc8r.LogLevel
-	45, // 30: magma.mconfig.SubscriberDB.sub_profiles:type_name -> magma.mconfig.SubscriberDB.SubProfilesEntry
-	46, // 31: magma.mconfig.LighttpD.log_level:type_name -> magma.orc8r.LogLevel
-	46, // 32: magma.mconfig.MonitorD.log_level:type_name -> magma.orc8r.LogLevel
-	46, // 33: magma.mconfig.DPID.log_level:type_name -> magma.orc8r.LogLevel
-	46, // 34: magma.mconfig.ConnectionD.log_level:type_name -> magma.orc8r.LogLevel
-	46, // 35: magma.mconfig.LIAgentD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 29: magma.mconfig.SubscriberDB.log_level:type_name -> magma.orc8r.LogLevel
+	46, // 30: magma.mconfig.SubscriberDB.sub_profiles:type_name -> magma.mconfig.SubscriberDB.SubProfilesEntry
+	47, // 31: magma.mconfig.LighttpD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 32: magma.mconfig.MonitorD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 33: magma.mconfig.DPID.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 34: magma.mconfig.ConnectionD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 35: magma.mconfig.LIAgentD.log_level:type_name -> magma.orc8r.LogLevel
 	27, // 36: magma.mconfig.LIAgentD.nprobe_tasks:type_name -> magma.mconfig.NProbeTask
-	46, // 37: magma.mconfig.DnsD.log_level:type_name -> magma.orc8r.LogLevel
+	47, // 37: magma.mconfig.DnsD.log_level:type_name -> magma.orc8r.LogLevel
 	29, // 38: magma.mconfig.DnsD.records:type_name -> magma.mconfig.GatewayDNSConfigRecordsItems
 	9,  // 39: magma.mconfig.AgwD.log_level:type_name -> magma.mconfig.AgwD.LogLevel
-	33, // 40: magma.mconfig.EnodebD.EnbConfigsBySerialEntry.value:type_name -> magma.mconfig.EnodebD.EnodebConfig
-	2,  // 41: magma.mconfig.PipelineD.HEConfig.encryptionAlgorithm:type_name -> magma.mconfig.PipelineD.HEConfig.EncryptionAlgorithm
-	3,  // 42: magma.mconfig.PipelineD.HEConfig.hashFunction:type_name -> magma.mconfig.PipelineD.HEConfig.HashFunction
-	4,  // 43: magma.mconfig.PipelineD.HEConfig.encodingType:type_name -> magma.mconfig.PipelineD.HEConfig.EncodingType
-	41, // 44: magma.mconfig.MME.ServiceAreaMapsEntry.value:type_name -> magma.mconfig.MME.TacList
-	44, // 45: magma.mconfig.SubscriberDB.SubProfilesEntry.value:type_name -> magma.mconfig.SubscriberDB.SubscriptionProfile
-	46, // [46:46] is the sub-list for method output_type
-	46, // [46:46] is the sub-list for method input_type
-	46, // [46:46] is the sub-list for extension type_name
-	46, // [46:46] is the sub-list for extension extendee
-	0,  // [0:46] is the sub-list for field type_name
+	31, // 40: magma.mconfig.AgwD.sctpd_downstream_middleware_config:type_name -> magma.mconfig.MiddlewareConfig
+	34, // 41: magma.mconfig.EnodebD.EnbConfigsBySerialEntry.value:type_name -> magma.mconfig.EnodebD.EnodebConfig
+	2,  // 42: magma.mconfig.PipelineD.HEConfig.encryptionAlgorithm:type_name -> magma.mconfig.PipelineD.HEConfig.EncryptionAlgorithm
+	3,  // 43: magma.mconfig.PipelineD.HEConfig.hashFunction:type_name -> magma.mconfig.PipelineD.HEConfig.HashFunction
+	4,  // 44: magma.mconfig.PipelineD.HEConfig.encodingType:type_name -> magma.mconfig.PipelineD.HEConfig.EncodingType
+	42, // 45: magma.mconfig.MME.ServiceAreaMapsEntry.value:type_name -> magma.mconfig.MME.TacList
+	45, // 46: magma.mconfig.SubscriberDB.SubProfilesEntry.value:type_name -> magma.mconfig.SubscriberDB.SubscriptionProfile
+	47, // [47:47] is the sub-list for method output_type
+	47, // [47:47] is the sub-list for method input_type
+	47, // [47:47] is the sub-list for extension type_name
+	47, // [47:47] is the sub-list for extension extendee
+	0,  // [0:47] is the sub-list for field type_name
 }
 
 func init() { file_mconfigs_proto_init() }
@@ -4317,7 +4385,7 @@ func file_mconfigs_proto_init() {
 			}
 		}
 		file_mconfigs_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EnodebD_FDDConfig); i {
+			switch v := v.(*MiddlewareConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4329,7 +4397,7 @@ func file_mconfigs_proto_init() {
 			}
 		}
 		file_mconfigs_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*EnodebD_TDDConfig); i {
+			switch v := v.(*EnodebD_FDDConfig); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4341,6 +4409,18 @@ func file_mconfigs_proto_init() {
 			}
 		}
 		file_mconfigs_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EnodebD_TDDConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_mconfigs_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*EnodebD_EnodebConfig); i {
 			case 0:
 				return &v.state
@@ -4352,7 +4432,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PipelineD_AllowedGrePeer); i {
 			case 0:
 				return &v.state
@@ -4364,7 +4444,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PipelineD_IPDRExportDst); i {
 			case 0:
 				return &v.state
@@ -4376,7 +4456,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PipelineD_LiUes); i {
 			case 0:
 				return &v.state
@@ -4388,7 +4468,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*PipelineD_HEConfig); i {
 			case 0:
 				return &v.state
@@ -4400,7 +4480,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MME_ApnCorrectionMap); i {
 			case 0:
 				return &v.state
@@ -4412,7 +4492,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MME_PlmnConfig); i {
 			case 0:
 				return &v.state
@@ -4424,7 +4504,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MME_TacList); i {
 			case 0:
 				return &v.state
@@ -4436,7 +4516,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MME_ImeiConfig); i {
 			case 0:
 				return &v.state
@@ -4448,7 +4528,7 @@ func file_mconfigs_proto_init() {
 				return nil
 			}
 		}
-		file_mconfigs_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
+		file_mconfigs_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SubscriberDB_SubscriptionProfile); i {
 			case 0:
 				return &v.state
@@ -4467,7 +4547,7 @@ func file_mconfigs_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_mconfigs_proto_rawDesc,
 			NumEnums:      10,
-			NumMessages:   36,
+			NumMessages:   37,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
